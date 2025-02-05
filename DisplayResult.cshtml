@@ -1,0 +1,70 @@
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Display Result";
+    var songTitle = ViewData["SongTitle"] as string;
+    var instrument = ViewData["Instrument"] as string;
+    var noResults = ViewData["NoResults"] as bool? ?? false;
+}
+
+<div class="container">
+    @if (noResults)
+    {
+        <h2>No results found for "<em>@songTitle</em>" - @instrument</h2>
+        <p>We couldn't find the sheet music you're looking for.</p>
+        <a href="/Home/AddSong" class="btn btn-primary">Add your song here</a>
+    }
+    else
+    {
+        <h2>Sheet Music for "<em>@songTitle</em>" - @instrument</h2>
+        <p>Here is your sheet music for the selected instrument.</p>
+        <!-- Display sheet music or links here -->
+    }
+</div>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f5f7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .container {
+        max-width: 600px;
+        padding: 40px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    h2 {
+        color: #4a4a4a;
+        margin-bottom: 20px;
+    }
+
+    p {
+        color: #6c757d;
+        margin-bottom: 30px;
+    }
+
+    .btn {
+        padding: 12px 20px;
+        background-color: #007bff;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+    }
+</style>

@@ -1,0 +1,131 @@
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+ViewData["Title"] = "Select Instrument";
+var songTitle = ViewData["SongTitle"] as string;
+}
+
+<div class="container">
+    <h2>Select an Instrument for "<em>@songTitle</em>"</h2>
+    <p>Choose the instrument to find your music sheet:</p>
+
+    <form action="/Home/DisplayResult" method="get">
+        <input type="hidden" name="song" value="@songTitle" />
+
+        <div class="instrument-options">
+            <label class="instrument-option">
+                <input type="radio" name="instrument" value="guitar" required>
+                <div class="instrument-content">
+                    <img src="/images/guitar.jpg" alt=" Guitar"/>
+                    <span>Guitar</span>
+                </div>
+            </label>
+
+            <label class="instrument-option">
+                <input type="radio" name="instrument" value="piano" required>
+                <div class="instrument-content">
+                    <img src="/images/piano.jpeg" alt="Piano"/>
+                    <span>Piano</span>
+                </div>
+            </label>
+
+            <label class="instrument-option">
+                <input type="radio" name="instrument" value="electric-guitar" required>
+                <div class="instrument-content">
+                    <img src="/images/eguitar.png" alt="Electric Guitar"/>
+                    <span>Electric Guitar</span>
+                </div>
+            </label>
+        </div>
+
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f5f7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .container {
+        max-width: 600px;
+        padding: 40px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    h2 {
+        color: #4a4a4a;
+        margin-bottom: 20px;
+    }
+
+    p {
+        color: #6c757d;
+        margin-bottom: 30px;
+    }
+
+    .instrument-options {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 20px;
+    }
+
+    .instrument-option {
+        width: 30%;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .instrument-option input[type="radio"] {
+        display: none;
+    }
+
+    .instrument-content {
+        border: 2px solid transparent;
+        border-radius: 8px;
+        padding: 20px;
+        transition: border-color 0.3s ease;
+    }
+
+    .instrument-content:hover,
+    .instrument-option input[type="radio"]:checked + .instrument-content {
+        border-color: #007bff;
+    }
+
+    .instrument-content img {
+        width: 80px;
+        height: auto;
+        display: block;
+        margin: 0 auto 10px;
+    }
+
+    .instrument-content span {
+        display: block;
+        font-weight: 500;
+        color: #333;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background-color: #007bff;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>

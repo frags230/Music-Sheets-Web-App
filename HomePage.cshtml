@@ -1,0 +1,140 @@
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model List<webapp.Models.Song>
+    @{
+    ViewData["Title"] = "Home Page";
+    }
+
+    <div class="container">
+        <div class="header">
+            <form action="/Home/HomePage" method="get" class="search-form">
+                <input type="text" name="searchString" placeholder="Search for a song..." class="search-input"/>
+                <button type="submit" class="search-button">Search</button>
+            </form>
+            <div class="instrument-icons">
+                <a href="/Home/HomePage?instrumentFilter=Guitar"><img src="/images/guitar.jpg" alt="Guitar" class="icon"></a>
+                <a href="/Home/HomePage?instrumentFilter=Piano"><img src="/images/piano.jpeg" alt="Piano" class="icon"></a>
+                <a href="/Home/HomePage?instrumentFilter=Electric Guitar"><img src="/images/eguitar.png" alt="Electric Guitar" class="icon"></a>
+            </div>
+            <a href="/Home/AddSong" class="add-song-button">Add Song</a>
+        </div>
+
+        <h2>Available Music Sheets</h2>
+        <table class="song-list">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Instrument</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var song in Model)
+            {
+            <tr>
+                <td>@song.Title</td>
+                <td>@song.Instrument</td>
+                <td><a href="@song.FilePath" target="_blank">View Sheet Music</a></td>
+            </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f5f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .search-form {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input {
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .search-button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-button:hover {
+            background-color: #0056b3;
+        }
+
+        .instrument-icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+
+        .add-song-button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .add-song-button:hover {
+            background-color: #218838;
+        }
+
+        h2 {
+            color: #4a4a4a;
+            margin-bottom: 20px;
+        }
+
+        .song-list {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .song-list th, .song-list td {
+            padding: 10px;
+            border: 1px solid #dee2e6;
+            text-align: left;
+        }
+
+        .song-list th {
+            background-color: #f8f9fa;
+            color: #495057;
+        }
+    </style>

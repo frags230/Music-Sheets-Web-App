@@ -1,0 +1,103 @@
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Add Song";
+}
+
+<div class="container">
+    <h2>Add Your Song</h2>
+    <p>Upload the sheet music for your song.</p>
+
+    <form action="/Home/AddSong" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="songTitle">Song Title</label>
+            <input type="text" id="songTitle" name="songTitle" placeholder="Enter song title..." required>
+        </div>
+
+        <div class="form-group">
+            <label for="instrument">Instrument</label>
+            <select id="instrument" name="instrument" required>
+                <option value="guitar">Guitar</option>
+                <option value="piano">Piano</option>
+                <option value="electric-guitar">Electric Guitar</option>
+                <!-- Add other instruments as needed -->
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="sheetMusic">Upload Sheet Music</label>
+            <input type="file" id="sheetMusic" name="sheetMusic" accept="application/pdf" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f5f7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .container {
+        max-width: 600px;
+        padding: 40px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    h2 {
+        color: #4a4a4a;
+        margin-bottom: 20px;
+    }
+
+    p {
+        color: #6c757d;
+        margin-bottom: 30px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    label {
+        font-weight: 500;
+        color: #333;
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    input[type="text"], select, input[type="file"] {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        font-size: 16px;
+        color: #495057;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background-color: #007bff;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>

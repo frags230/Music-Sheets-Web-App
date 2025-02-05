@@ -1,0 +1,96 @@
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+    @{
+    ViewData["Title"] = "Music Sheet Finder";
+}
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+ViewData["Title"] = "Music Sheet Finder";
+}
+
+<div class="container">
+    <h2>Music Sheet Finder</h2>
+    <p>Enter the name of the song to find your sheet music.</p>
+
+    <form action="/Home/SelectInstrument" method="get">
+        <div class="form-group">
+            <label for="song">Song Title</label>
+            <input type="text" id="song" name="song" placeholder="Enter song title..." required>
+        </div>
+
+        <button type="submit">Next</button>
+    </form>
+</div>
+
+<style>
+    /* Styles omitted for brevity */
+</style>
+
+
+    <style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f5f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    max-width: 500px;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h2 {
+    color: #4a4a4a;
+    margin-bottom: 20px;
+}
+
+p {
+    color: #6c757d;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    font-weight: 500;
+    color: #333;
+    display: block;
+    margin-bottom: 8px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #495057;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+</style>
